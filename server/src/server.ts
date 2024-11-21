@@ -1,6 +1,7 @@
-import path from 'path'
+import path from 'path';
 import { fileURLToPath } from 'url';
-import express from 'express'
+import express from 'express';
+import {Request, Response} from 'express';
 
 // APP
 const app = express();
@@ -16,9 +17,9 @@ const __dirname = path.dirname(__filename);
 
 const PORT = 3001;
 
-app.get('/', (req, res) => {
+app.get('/', (_req: Request, res: Response) => {
 
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, '..' , 'public', 'index.html'));
 
 });
 
