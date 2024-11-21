@@ -19,7 +19,7 @@ const PORT = 3001;
 
 app.get('/', (_req: Request, res: Response) => {
 
-  res.sendFile(path.join(__dirname, '..' , 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, '..' , 'dist', 'index.html'));
 
 });
 
