@@ -3,26 +3,15 @@ import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4'
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { typeDefs, resolvers} from './schemas/index.js'
 
-
-const typeDefs = `
-  type Query {
-    hello: String
-  }
-`
-
-const resolvers = {
-  Query: {
-    hello: () => 'Hello, World!'
-  },
-};
-
-
+// Create an instance of a GraphQL Server
 const server = new ApolloServer({
   typeDefs,
   resolvers,
 })
 
+// Main function to start application
 const startApolloServer = async (server: ApolloServer) => {
   // start graph ql server
   await server.start();
@@ -51,7 +40,8 @@ const startApolloServer = async (server: ApolloServer) => {
   app.use('/graphql', (expressMiddleware(server) as unknown) as RequestHandler)
   
    app.listen(PORT, () => {
-    console.log(`Now listening on port ${PORT}...`);
+    console.log(`Now listening on port http://localhost:${PORT}...`);
+    console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
   })
 
 }
